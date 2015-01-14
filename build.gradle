@@ -1,0 +1,37 @@
+apply plugin: "java"
+apply plugin: "idea"
+
+sourceCompatibility = "1.6"
+version = "1.0"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // logging
+    compile "logback:slf4j-api:1.4.3@jar"
+    compile "logback:slf4j-log4j12:1.4.3@jar"
+    compile "logback:jcl104-over-slf4j:1.4.3@jar"
+    compile "apache:log4j:1.2.15@jar"
+    // APNS
+    compile "com.github.fernandospr:JavaPNS:2.2@jar"
+    compile "com.github.fernandospr:bcprov:1.46@jar"
+    // GOOGLE CLOUD MESSAGING FOR ANDROID
+    compile "com.google.android.gcm.server:gcm_server:1.0.2@jar"
+    compile "com.google.android.gcm.server:json_simple:1.1@jar"
+}
+
+idea {
+    project {
+        jdkName = sourceCompatibility
+        languageLevel = sourceCompatibility
+    }
+
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'Windows-1251'
